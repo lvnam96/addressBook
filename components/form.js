@@ -143,7 +143,7 @@ class Form extends Component {
 
         name = name.trim();
         if (name === '') {
-            this.props.showNoti('error', 'Please type a name');
+            this.props.showNoti('error', 'Tên không được để trống.');
             return;
         } else {
             this.state.name = name;
@@ -204,7 +204,7 @@ class Form extends Component {
                             <div className='form-body__avt'>
                                 <div className="form-body__avt__first-letter"
                                     style={{backgroundColor: this.state.color}}
-                                    title='We have not support avatar yet! So... choose a random color for this contact!'
+                                    title='Chúng tôi chưa hỗ trợ avatar cho các liên lạc. Hãy chọn màu ưa thích cho từng liên lạc nếu bạn muốn!'
                                     ref={thisDiv => { this.avtDOM = thisDiv; }}
                                     onClick={this.changeColor}>
                                     {firstLetter}
@@ -218,7 +218,7 @@ class Form extends Component {
                                         onFocus={this.addFilledClass}
                                         onBlur={this.checkInputFilled}
                                         className="form__input-field"/>
-                                    <label htmlFor='inputs__name'><span>Name</span></label>
+                                    <label htmlFor='inputs__name'><span>Tên</span></label>
                                 </div>
                                 <div className='form-body__inputs__labels'>
                                     <div className='form-body__inputs__labels__family'>
@@ -226,21 +226,21 @@ class Form extends Component {
                                             ref={thisDOM => this.cboxFamily = thisDOM}
                                             defaultChecked={(this.state.labels.indexOf('family') > -1) ? true : false} />
                                         <label className='checkbox__label' htmlFor='checkbox__family'></label>
-                                        <label htmlFor='checkbox__family'>Family</label>
+                                        <label htmlFor='checkbox__family'>Gia đình</label>
                                     </div>
                                     <div className='form-body__inputs__labels__coWorker'>
                                         <input type='checkbox' id='checkbox__coWorker'
                                             ref={thisDOM => this.cboxCoWorker = thisDOM}
                                             defaultChecked={(this.state.labels.indexOf('coWorker') > -1) ? true : false} />
                                         <label className='checkbox__label' htmlFor='checkbox__coWorker'></label>
-                                        <label htmlFor='checkbox__coWorker'>Co-worker</label>
+                                        <label htmlFor='checkbox__coWorker'>Đồng nghiệp</label>
                                     </div>
                                     <div className='form-body__inputs__labels__friends'>
                                         <input type='checkbox' id='checkbox__friends'
                                             ref={thisDOM => this.cboxFriends = thisDOM}
                                             defaultChecked={(this.state.labels.indexOf('friends') > -1) ? true : false} />
                                         <label className='checkbox__label' htmlFor='checkbox__friends'></label>
-                                        <label htmlFor='checkbox__friends'>Friends</label>
+                                        <label htmlFor='checkbox__friends'>Bạn bè</label>
                                     </div>
                                 </div>
                                 <div className='form-body__input form-body__inputs__phone'>
@@ -250,7 +250,7 @@ class Form extends Component {
                                         onFocus={this.addFilledClass}
                                         onBlur={this.checkInputFilled}
                                         className="form__input-field"/>
-                                    <label htmlFor='inputs__phone'><span>Phone</span></label>
+                                    <label htmlFor='inputs__phone'><span>Điện thoại</span></label>
                                 </div>
                                 <div className='form-body__input form-body__inputs__birth'>
                                     <input type='date' id='inputs__birth'
@@ -259,7 +259,7 @@ class Form extends Component {
                                         onFocus={this.addFilledClass}
                                         onBlur={this.checkInputFilled}
                                         className="form__input-field"/>
-                                    <label htmlFor='inputs__birth'><span>Birth</span></label>
+                                    <label htmlFor='inputs__birth'><span>Ngày sinh</span></label>
                                 </div>
                                 <div className='form-body__input form-body__inputs__email'>
                                     <input type='email' id='inputs__email'
@@ -290,7 +290,7 @@ class Form extends Component {
                                         onFocus={this.addFilledClass}
                                         onBlur={this.checkInputFilled}
                                         className="form__input-field"/>
-                                    <label htmlFor='inputs__note'><span>Note</span></label>
+                                    <label htmlFor='inputs__note'><span>Ghi chú</span></label>
                                 </div>
                             </div>
                         </div>
@@ -298,11 +298,11 @@ class Form extends Component {
                             <input type='reset' value='Reset'
                                 className='form-footer__reset-btn'
                                 onClick={this.resetForm}/>
-                            <input type='button' value='Cancel'
+                            <input type='button' value='Huỷ'
                                 className='form-footer__cancel-btn'
                                 onClick={this.props.onClose}/>
                             <input type='submit'
-                                value={this.props.title === 'Edit Contact' ? 'Save' : 'Add'}
+                                value={this.props.title === 'Chỉnh sửa liên lạc' ? 'Lưu' : 'Tạo'}
                                 className='form-footer__save-btn'
                                 onClick={this.handlerSaveForm}/>
                         </div>

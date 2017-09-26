@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 
 const AddContactForm = props => (
-    <Form title="Add new contact" {...props} />
+    <Form title="Tạo liên lạc mới" {...props} />
 );
 
 AddContactForm.propTypes = {

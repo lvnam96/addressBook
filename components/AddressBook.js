@@ -63,7 +63,7 @@ class AddressBook extends Component {
                 if (idx === 0) { return; }
                 contacts += ` & ${contact.name}`;
             });
-            this.showNoti('alert', `Today is ${contacts}'s birthday!! Wish ${birthsToday.length > 1 ? 'them' : 'him/her'} a happy birthday!`);
+            this.showNoti('alert', `Hôm nay là sinh nhật của ${contacts}!`);
         }
     }
     setTimer(e) {
@@ -76,10 +76,10 @@ class AddressBook extends Component {
         const API = this.props.API;
         // if data is empty already, no need to do anything
         if (!API.listLength()) {
-            this.showNoti('alert', 'There is no data left. Is it bad?');
+            this.showNoti('alert', 'Không có dữ liệu để xoá.');
             return;
         }
-        if (confirm('Are you sure to delete all your data?')) {
+        if (confirm('Bạn có chắc chắn muốn xoá tất cả không?')) {
             API.rmAllContacts();
             this.refresh();
             this.setState({ checkedItems: [] });
@@ -141,7 +141,7 @@ class AddressBook extends Component {
     }
     rmItem(contactId) {
         const API = this.props.API;
-        if (confirm('Delete this contact? Are you sure?')) {
+        if (confirm('Bạn muốn xoá liên lạc này trong danh bạ?')) {
             API.find(contactId, API.rmContact);
             this.refresh();
             // Remove contact's id out of checkedItems list if that contact was checked before
@@ -160,7 +160,7 @@ class AddressBook extends Component {
             contactIndex: API.find(editedContact.id)
         });
         this.closeForm();
-        this.showNoti('success', `Saved.`);
+        this.showNoti('success', `Đã lưu.`);
     }
     addNewContact(newContact) {
         const API = this.props.API;
@@ -168,7 +168,7 @@ class AddressBook extends Component {
         API.addContact(newContact);
         this.refresh();
         this.closeForm();
-        this.showNoti('success', `New contact: "${newContact.name}" was created.`);
+        this.showNoti('success', `Đã tạo 1 liên lạc mới: "${newContact.name}" .`);
     }
     showNoti(notiType, notiMsg) {
         this.state.notiList.push({
@@ -222,7 +222,7 @@ class AddressBook extends Component {
                 API.saveDataToLocalStorage();
                 API.dataNeedToBeSorted();
                 this.displayAll();
-                this.showNoti('success', 'Your data is restored successfully!');
+                this.showNoti('success', 'Dữ liệu của bạn đã được phục hồi thành công!');
             }, false);
             reader.readAsText(fileToLoad, 'UTF-8');
         }
@@ -232,7 +232,7 @@ class AddressBook extends Component {
             function destroyClickedElement(e) {
                 this.bodyElem.removeChild(e.target);
             }
-            let fileName = prompt('Type the name for your backup file:', 'contacts_backupFile.txt');
+            let fileName = prompt('Đặt tên cho tập tin sao lưu:', 'contacts_backupFile.txt');
             fileName = (fileName === '' ? 'contacts_backupFile.txt' : fileName); 
             if (fileName) {
                 let textToWrite = JSON.stringify(this.props.API.getContactsList()).replace(/\n/g, '\r\n');
@@ -256,10 +256,10 @@ class AddressBook extends Component {
                     }
                     downloadLink.click();
                 }
-                this.showNoti('success', 'We have exported your data. Save it to safe place!');
+                this.showNoti('success', 'Chúng tôi đã xuất dữ liệu của bạn. Hãy lưu nó vào một nơi an toàn!');
             }
         } else {
-            this.showNoti('alert', 'Sorry, your browser does not support HTML5 Blob. We can not export your data.');
+            this.showNoti('alert', 'Xin lỗi, trình duyệt của bạn không hỗ trợ HTML5 Blob. Chúng tôi không thể xuất dữ liệu sao lưu cho bạn.');
         }
     }
     handleCheckedItems() {
@@ -313,13 +313,13 @@ class AddressBook extends Component {
     handlerDeleteMenu(e) {
         const API = this.props.API;
         if (this.state.checkedItems.length > 0) {
-            if (confirm('Are you want to delete these checked contacts?')) {
+            if (confirm('Bạn có chắc chắn muốn xoá các liên lạc đã được đánh dấu không?')) {
                 API.find(this.state.checkedItems, API.rmContact);
                 this.refresh();
                 this.setState({ checkedItems: [] });
             }
         } else {
-            this.showNoti('alert', 'Long-press to delete all contacts');
+            this.showNoti('alert', 'Nhấn giữ để xoá tất cả liên lạc trong danh bạ!');
         }
     }
     handlerAddCheckedItem(itemId) {

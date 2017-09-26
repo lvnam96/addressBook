@@ -22,8 +22,8 @@ const ContactItem = props => (
             <span>{props.phone && '+84' + props.phone}</span>
         </div>
         <div className="contact-item__buttons">
-            <div onClick={props.onClickEdit} title="Edit this contact"><i className="fa fa-pencil"></i></div>
-            <div onClick={props.onClickRemove} title="Delete this contact"><i className="fa fa-user-times"></i></div>
+            <div onClick={props.onClickEdit} title="Chỉnh sửa"><i className="fa fa-pencil"></i></div>
+            <div onClick={props.onClickRemove} title="Xoá"><i className="fa fa-user-times"></i></div>
         </div>
     </li>
 );

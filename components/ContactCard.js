@@ -69,11 +69,11 @@ const ContactCard = props => {
                                 {props.labels.map((label) => {
                                     switch (label) {
                                         case 'family':
-                                            return (<span className="contact-card__header__tag-family" key={1}>Family</span>);
+                                            return (<span className="contact-card__header__tag-family" key={1}>Gia đình</span>);
                                         case 'coWorker':
-                                            return (<span className="contact-card__header__tag-co-worker" key={2}>Coworkers</span>);
+                                            return (<span className="contact-card__header__tag-co-worker" key={2}>Đồng nghiệp</span>);
                                         case 'friends':
-                                            return (<span className="contact-card__header__tag-friends" key={3}>Friends</span>);
+                                            return (<span className="contact-card__header__tag-friends" key={3}>Bạn bè</span>);
                                     }
                                 })}
                             </div>
@@ -81,7 +81,7 @@ const ContactCard = props => {
                     </div>
                 </div>
                 <div className="contact-card__body">
-                    <p>Contact Details</p>
+                    <p>Chi tiết liên lạc</p>
                     <div className="contact-card__details">
                         {props.phone && (<div>
                             <div className="contact-card__details__info">

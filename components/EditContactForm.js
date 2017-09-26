@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Form from './Form';
 
 const EditContactForm = props => (
-    <Form title="Edit Contact" {...props} />
+    <Form title="Chỉnh sửa liên lạc" {...props} />
 );
 
 EditContactForm.propTypes = {
